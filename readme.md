@@ -2,7 +2,7 @@
 
 - [Introduction](#introduction)
 - [Running the Code](#running-the-code)
-- [How Does It Work?](#how-does-it-work?)
+- [How Does It Work?](#how-does-it-work)
 - [Code Structure](#code-structure)
 - [Publications](#publications)
 
@@ -19,7 +19,7 @@ We fit our desired line to these points using RANSAC.
 
 ![DSAC line fitting.](./images/dsac.png)
 
-**Left:** Input image. **Center:** Points predicted by a CNN. **Right:** Line (blue) fitted to predictions.
+**Left:** Input image. **Center:** Points predicted by a CNN. **Right:** Line (blue) fitted to the predictions.
 
 Ideally, the CNN would place all its point predictions on the image line segment.
 But because RANSAC is robust to outlier points, the CNN may choose to allow some erroneous predictions in favor of overall accuracy. 
@@ -31,11 +31,11 @@ We train the CNN end-to-end from scratch to minimize the deviation between the (
 Just execute `python main.py` to start a training run with the standard settings. 
 Running `python main.py -h` will list all parameter options for playing around.
 
-The code generates training data on the fly, and trains two CNNs ins parallel. 
+The code generates training data on the fly, and trains two CNNs in parallel. 
 The first CNN predicts a set of 2D points to which the output line is fitted using DSAC.
 The second CNN is a baseline where the line parameters are predicted directly, i.e. without DSAC.
 
-In a specified interval during training, both CNNs are tested on a fixed validation set, and the vizualisation of the predictions is stored in an images such as the following:
+In a specified interval during training, both CNNs are tested on a fixed validation set, and the visualization of the predictions is stored in an image such as the following:
 
 ![Training output.](./images/example_output.png)
 
@@ -92,7 +92,7 @@ Red arrows mark the error between ground truth line (green) and estimated line (
 
 `dsac.py` Encapsulates robust, differentiable line fitting with DSAC (sampling hypotheses, scoring, refinement, expected loss).
 
-`line_dataset.py` Generates random, noisy input images with associated ground truth parameters. Also includes functions for vizualising predictions.
+`line_dataset.py` Generates random, noisy input images with associated ground truth parameters. Also includes functions for visualizing predictions.
 
 `line_loss.py` Loss function used to compare predicted and ground truth lines.
 
